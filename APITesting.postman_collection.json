@@ -1,55 +1,18 @@
 {
 	"info": {
-		"_postman_id": "817dda8e-a1b0-46b3-be38-4555b3b6cf96",
-		"name": "API Testing",
+		"_postman_id": "d91b5d91-fcc1-443b-bb93-ee18db911366",
+		"name": "First Collection",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "16825267"
+		"_exporter_id": "5563346"
 	},
 	"item": [
 		{
-			"name": "GET Req",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Response time is less than 200ms\", function () {\r",
-							"    pm.expect(pm.response.responseTime).to.be.below(700);\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Body matches string\", function () {\r",
-							"    pm.expect(pm.response.text()).to.include(\"free\");\r",
-							"});\r",
-							"pm.test(\"Check JSON Data\", function () {\r",
-							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.data.id).to.eql(12);\r",
-							"});\r",
-							"pm.test(\"Check last name \", function () {\r",
-							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.data.last_name).to.eql(\"Howell\");\r",
-							"});\r",
-							"pm.test(\"Check url \", function () {\r",
-							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.support.url).contains(\"support-heading\");\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Content-Type is present\", function () {\r",
-							"    pm.response.to.have.header(\"Content-Type\");\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
+			"name": "Get Request",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://reqres.in/api/users?id=12",
+					"raw": "https://reqres.in/api/users/5",
 					"protocol": "https",
 					"host": [
 						"reqres",
@@ -57,39 +20,15 @@
 					],
 					"path": [
 						"api",
-						"users"
-					],
-					"query": [
-						{
-							"key": "id",
-							"value": "12"
-						}
+						"users",
+						"5"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "POST Req",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Response time is less than 200ms\", function () {\r",
-							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Successful POST request\", function () {\r",
-							"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
-							"});\r",
-							"\r",
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
+			"name": "Post Request",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -118,18 +57,13 @@
 			"response": []
 		},
 		{
-			"name": "PUT",
+			"name": "Put Request",
 			"request": {
 				"method": "PUT",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\"data\": {        \r\n    \"id\": 5,\r\n    \"email\": \"smitha@test.in\",\r\n    \"first_name\": \"Test\",\r\n    \"last_name\": \"Name\"\r\n}\r\n}\r\n",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
+					"raw": "{\r\n    \"data\": {        \r\n        \"id\": 5,\r\n        \"email\": \"smitha@test.in\",\r\n        \"first_name\": \"Test1\",\r\n        \"last_name\": \"Name\"\r\n    }\r\n}\r\n"
 				},
 				"url": {
 					"raw": "https://reqres.in/api/users/5",
@@ -148,21 +82,16 @@
 			"response": []
 		},
 		{
-			"name": "Delete",
+			"name": "Delete Request",
 			"request": {
 				"method": "DELETE",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "\r\n{        \r\n    \"id\": 5\r\n}\r\n\r\n",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
+					"raw": ""
 				},
 				"url": {
-					"raw": "https://reqres.in/api/users",
+					"raw": "https://reqres.in/api/users?id=5",
 					"protocol": "https",
 					"host": [
 						"reqres",
@@ -171,56 +100,11 @@
 					"path": [
 						"api",
 						"users"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Lambda",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Body matches string\", function () {\r",
-							"    pm.expect(pm.response.text()).to.include(\"profession\");\r",
-							"});\r",
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "https://lw0qsqpnfl.execute-api.ap-southeast-2.amazonaws.com/cnats/cnatsapi_resource?first_name=Smitha&last_name=Menon",
-					"protocol": "https",
-					"host": [
-						"lw0qsqpnfl",
-						"execute-api",
-						"ap-southeast-2",
-						"amazonaws",
-						"com"
-					],
-					"path": [
-						"cnats",
-						"cnatsapi_resource"
 					],
 					"query": [
 						{
-							"key": "first_name",
-							"value": "Smitha"
-						},
-						{
-							"key": "last_name",
-							"value": "Menon"
+							"key": "id",
+							"value": "5"
 						}
 					]
 				}
